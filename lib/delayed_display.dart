@@ -20,7 +20,8 @@ class DelayedDisplay extends StatefulWidget {
   /// Offset of the widget at the beginning of the sliding animation
   final Offset slidingBeginOffset;
 
-  DelayedDisplay({
+  /// DelayedDisplay constructor
+  const DelayedDisplay({
     @required this.child,
     this.delay,
     this.fadingDuration = const Duration(milliseconds: 800),
@@ -33,17 +34,26 @@ class DelayedDisplay extends StatefulWidget {
 }
 
 class _DelayedDisplayState extends State<DelayedDisplay> with TickerProviderStateMixin {
+  /// Controller of the opacity animation
   AnimationController _opacityController;
+
+  /// Sliding Animation offset
   Animation<Offset> _slideAnimationOffset;
 
+  /// Simple getter for widget's delay
   Duration get delay => widget.delay;
 
+  /// Simple getter for widget's opacityTransitionDuration
   Duration get opacityTransitionDuration => widget.fadingDuration;
 
+  /// Simple getter for widget's slidingCurve
   Curve get slidingCurve => widget.slidingCurve;
 
+  /// Simple getter for widget's beginOffset
   Offset get beginOffset => widget.slidingBeginOffset;
 
+  /// Initialize controllers, curve and offset with given parameters or default values
+  /// Use a Timer in order to delay the animations if needed
   @override
   void initState() {
     super.initState();
@@ -72,6 +82,7 @@ class _DelayedDisplayState extends State<DelayedDisplay> with TickerProviderStat
     }
   }
 
+  /// Dispose the opacity controller
   @override
   void dispose() {
     super.dispose();
