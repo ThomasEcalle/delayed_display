@@ -1,7 +1,7 @@
 name: delayed_display
 description: A widget that enables you to display a child after a delay and with beautiful fading and sliding animation.
 version: 1.0.0
-homepage: https://www.linkedin.com/in/thomas-ecalle-239568120
+homepage: https://github.com/ThomasEcalle/delayed_display
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
