@@ -2,13 +2,41 @@
 
 A widget that enables you to display a child after a delay and with beautiful fading and sliding animation.
 
-## Getting Started
+## examples
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+<p align="center">
+<img src="https://github.com/ThomasEcalle/delayed_display/blob/master/documentation/horizontal.gif" width="140" height="280" />
+<img src="https://github.com/ThomasEcalle/delayed_display/blob/master/documentation/vertical.gif" width="140" height="280" />
+</p>
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## How does it works
+
+All you have to do is to use the widget `DelayedDisplay` like this for example :
+
+```
+DelayedDisplay(
+  delay: Duration(seconds: 1),
+  child: Text(
+    "Hello",
+    style: TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: 35.0,
+      color: Colors.white,
+    ),
+  ),
+),
+```
+
+And ... That's all ! It will automatically handle fading and sliding animation and will make the Text appear after 1 second delay.
+
+## Let's customize it !
+
+Here are the accepted parameters :
+
+| Name  | Type | Usage | Required | Default Value |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| child  | Widget | The Widget that needs to appear | yes | null |
+| delay  | Duration | The duration before showing the widget (and animating it) | false | null |
+| fadingDuration  | Duration | The duration of the fading animation | false | const Duration(milliseconds: 800)|
+| slidingCurve  | Curve | The curve of the sliding animation| false | Curves.decelerate |
+| slidingBeginOffset  | Offset | The offset from where the sliding animation will start | false | const Offset(0.0, 0.35) |
