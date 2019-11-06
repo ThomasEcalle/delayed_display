@@ -5,8 +5,9 @@ A widget that enables you to display a child after a delay and with beautiful fa
 ## examples
 
 <p align="center">
-<img src="https://github.com/ThomasEcalle/delayed_display/blob/master/documentation/horizontal.gif" width="140" height="280" />
-<img src="https://github.com/ThomasEcalle/delayed_display/blob/master/documentation/vertical.gif" width="140" height="280" />
+<img src="https://raw.githubusercontent.com/ThomasEcalle/delayed_display/master/documentation/horizontal.gif" width="140" height="280" hspace="20"/>
+  
+<img src="https://raw.githubusercontent.com/ThomasEcalle/delayed_display/master/documentation/vertical.gif" width="140" height="280" hspace="20"/>
 </p>
 
 ## How does it works
