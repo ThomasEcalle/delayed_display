@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [1.0.0] - First version
 
-* TODO: Describe initial release.
+* Possibility to customize a lot the animations
