@@ -5,3 +5,7 @@
 ## [1.0.1] - Update documentation
 
 * Simply update documentation of the package
+
+## [1.0.2] - Fix dispose
+
+* Fix the call to dispose on the animation
