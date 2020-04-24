@@ -40,6 +40,9 @@ class _DelayedDisplayState extends State<DelayedDisplay> with TickerProviderStat
   /// Sliding Animation offset
   Animation<Offset> _slideAnimationOffset;
 
+  /// Timer used to delayed animation
+  Timer _timer;
+
   /// Simple getter for widget's delay
   Duration get delay => widget.delay;
 
@@ -76,7 +79,7 @@ class _DelayedDisplayState extends State<DelayedDisplay> with TickerProviderStat
     if (delay == null) {
       _opacityController.forward();
     } else {
-      Timer(delay, () {
+      _timer = Timer(delay, () {
         _opacityController.forward();
       });
     }
@@ -86,6 +89,7 @@ class _DelayedDisplayState extends State<DelayedDisplay> with TickerProviderStat
   @override
   void dispose() {
     _opacityController.dispose();
+    _timer?.cancel();
     super.dispose();
   }
 
