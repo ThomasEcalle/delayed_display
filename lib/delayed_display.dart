@@ -33,7 +33,8 @@ class DelayedDisplay extends StatefulWidget {
   _DelayedDisplayState createState() => _DelayedDisplayState();
 }
 
-class _DelayedDisplayState extends State<DelayedDisplay> with TickerProviderStateMixin {
+class _DelayedDisplayState extends State<DelayedDisplay>
+    with TickerProviderStateMixin {
   /// Controller of the opacity animation
   AnimationController _opacityController;
 
