@@ -20,6 +20,9 @@ class DelayedDisplay extends StatefulWidget {
   /// Offset of the widget at the beginning of the sliding animation
   final Offset slidingBeginOffset;
 
+  /// If true, make the child appear, disappear otherwise. Default to true.
+  final bool fadeIn;
+
   /// DelayedDisplay constructor
   const DelayedDisplay({
     @required this.child,
@@ -27,6 +30,7 @@ class DelayedDisplay extends StatefulWidget {
     this.fadingDuration = const Duration(milliseconds: 800),
     this.slidingCurve = Curves.decelerate,
     this.slidingBeginOffset = const Offset(0.0, 0.35),
+    this.fadeIn = true,
   });
 
   @override
@@ -56,6 +60,9 @@ class _DelayedDisplayState extends State<DelayedDisplay>
   /// Simple getter for widget's beginOffset
   Offset get beginOffset => widget.slidingBeginOffset;
 
+  /// Simple getter for widget's fadeIn
+  bool get fadeIn => widget.fadeIn;
+
   /// Initialize controllers, curve and offset with given parameters or default values
   /// Use a Timer in order to delay the animations if needed
   @override
@@ -65,6 +72,7 @@ class _DelayedDisplayState extends State<DelayedDisplay>
     _opacityController = AnimationController(
       vsync: this,
       duration: opacityTransitionDuration,
+      value: 0.0
     );
 
     final CurvedAnimation curvedAnimation = CurvedAnimation(
@@ -77,21 +85,36 @@ class _DelayedDisplayState extends State<DelayedDisplay>
       end: Offset.zero,
     ).animate(curvedAnimation);
 
-    if (delay == null) {
-      _opacityController.forward();
-    } else {
-      _timer = Timer(delay, () {
-        _opacityController.forward();
-      });
-    }
+    _runFadeAnimation();
   }
 
   /// Dispose the opacity controller
   @override
   void dispose() {
-    _opacityController.dispose();
+    _opacityController?.dispose();
     _timer?.cancel();
     super.dispose();
+  }
+
+  /// Whenever the widget is updated and that fadeIn is different from the oldWidget, triggers the fade in
+  /// or out animation.
+  @override
+  void didUpdateWidget(DelayedDisplay oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if(oldWidget.fadeIn == fadeIn) {
+      return;
+    }
+    _runFadeAnimation();
+  }
+
+  void _runFadeAnimation() {
+    if (delay == null) {
+      fadeIn ? _opacityController.forward() : _opacityController.reverse();
+    } else {
+      _timer = Timer(delay, () {
+        fadeIn ? _opacityController.forward() : _opacityController.reverse();
+      });
+    }
   }
 
   @override
