@@ -72,7 +72,6 @@ class _DelayedDisplayState extends State<DelayedDisplay>
     _opacityController = AnimationController(
       vsync: this,
       duration: opacityTransitionDuration,
-      value: 0.0
     );
 
     final CurvedAnimation curvedAnimation = CurvedAnimation(
