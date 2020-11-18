@@ -13,3 +13,7 @@
 ## [1.0.3] - Fix dispose
 
 * Dispose the timer to fix the error when navigating before the end of the animation
+
+## [1.1.0] - Fix dispose
+
+* Add fadeIn parameter so the widget can also fade out when updating the widget's state
