@@ -46,7 +46,9 @@ class MyApp extends StatelessWidget {
                   child: Container(
                     width: 200,
                     height: 50,
-                    decoration: BoxDecoration(color: Colors.blueAccent, borderRadius: BorderRadius.circular(30)),
+                    decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        borderRadius: BorderRadius.circular(30)),
                     child: Center(
                       child: Text(
                         "Subscribe",
