@@ -17,3 +17,7 @@
 ## [1.1.0] - Fix dispose
 
 * Add fadeIn parameter so the widget can also fade out when updating the widget's state
+
+## [2.0.0] - Null Safety
+
+* Add null-safety handling on package and example
