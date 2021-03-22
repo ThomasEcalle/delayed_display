@@ -25,8 +25,8 @@ class DelayedDisplay extends StatefulWidget {
 
   /// DelayedDisplay constructor
   const DelayedDisplay({
-    @required this.child,
-    this.delay,
+    required this.child,
+    this.delay = Duration.zero,
     this.fadingDuration = const Duration(milliseconds: 800),
     this.slidingCurve = Curves.decelerate,
     this.slidingBeginOffset = const Offset(0.0, 0.35),
@@ -37,16 +37,15 @@ class DelayedDisplay extends StatefulWidget {
   _DelayedDisplayState createState() => _DelayedDisplayState();
 }
 
-class _DelayedDisplayState extends State<DelayedDisplay>
-    with TickerProviderStateMixin {
+class _DelayedDisplayState extends State<DelayedDisplay> with TickerProviderStateMixin {
   /// Controller of the opacity animation
-  AnimationController _opacityController;
+  late AnimationController _opacityController;
 
   /// Sliding Animation offset
-  Animation<Offset> _slideAnimationOffset;
+  late Animation<Offset> _slideAnimationOffset;
 
   /// Timer used to delayed animation
-  Timer _timer;
+  Timer? _timer;
 
   /// Simple getter for widget's delay
   Duration get delay => widget.delay;
@@ -90,7 +89,7 @@ class _DelayedDisplayState extends State<DelayedDisplay>
   /// Dispose the opacity controller
   @override
   void dispose() {
-    _opacityController?.dispose();
+    _opacityController.dispose();
     _timer?.cancel();
     super.dispose();
   }
@@ -100,20 +99,16 @@ class _DelayedDisplayState extends State<DelayedDisplay>
   @override
   void didUpdateWidget(DelayedDisplay oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if(oldWidget.fadeIn == fadeIn) {
+    if (oldWidget.fadeIn == fadeIn) {
       return;
     }
     _runFadeAnimation();
   }
 
   void _runFadeAnimation() {
-    if (delay == null) {
+    _timer = Timer(delay, () {
       fadeIn ? _opacityController.forward() : _opacityController.reverse();
-    } else {
-      _timer = Timer(delay, () {
-        fadeIn ? _opacityController.forward() : _opacityController.reverse();
-      });
-    }
+    });
   }
 
   @override
