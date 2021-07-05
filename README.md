@@ -14,7 +14,7 @@ A widget that enables you to display a child after a delay and with beautiful fa
 
 All you have to do is to use the widget `DelayedDisplay` like this for example :
 
-```
+``` dart
 DelayedDisplay(
   delay: Duration(seconds: 1),
   child: Text(
